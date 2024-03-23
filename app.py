@@ -17,26 +17,26 @@ def fetch_poster(movie_id):
 def recommend2(movie): # here the selected movie from a dropdown box come
     movie_index = movies[movies['title'] == movie].index[0] # here we got the index of the selected movie
     # from the dataset of movies and index[0] is used to get only the index not a complete row
-    if movie_index < 500:
+    if movie_index in range(0, 500):
         distances = similarity1[movie_index] # here similarity contains the cosine_similarity of vectors of all movies
     if movie_index in range(500,1000):
-        distances = similarity2[movie_index]
+        distances = similarity2[movie_index -500]
     if movie_index in range(1000,1500):
-        distances = similarity3[movie_index]
+        distances = similarity3[movie_index - 1000]
     if movie_index in range(1500,2000):
-        distances = similarity4[movie_index]
+        distances = similarity4[movie_index - 1500]
     if movie_index in range(2000,2500):
-        distances = similarity5[movie_index]
+        distances = similarity5[movie_index - 2000]
     if movie_index in range(2500,3000):
-        distances = similarity6[movie_index]
+        distances = similarity6[movie_index - 2500]
     if movie_index in range(3000,3500):
-        distances = similarity7[movie_index]
+        distances = similarity7[movie_index - 3000]
     if movie_index in range(3500,4000):
-        distances = similarity8[movie_index]
+        distances = similarity8[movie_index - 3500]
     if movie_index in range(4000,4500):
-        distances = similarity9[movie_index]
-    else:
-        distances = similarity10[movie_index]
+        distances = similarity9[movie_index - 4000]
+    if movie_index in range(4500,4810):
+        distances = similarity10[movie_index - 4500]
     # and by giving movie_index we get the similarity ratio of all movies to the given index movie
     movies_list = sorted(list(enumerate(distances)), key= lambda x:x[1], reverse = True)[1:11]
     # here sorted is used to sort the movies, list to convert in list,
